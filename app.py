@@ -36,7 +36,7 @@ if uploaded_file is not None:
 
             # **📌 Stats Section**
             st.markdown("## 📊 Chat Summary")
-            col1, col2, col3, col4, col5, col6 = st.columns(6)
+            col1, col2, col3 = st.columns(3)
 
             with col1:
                 st.metric(label="💬 Messages", value=msg_count)
@@ -44,15 +44,16 @@ if uploaded_file is not None:
                 st.metric(label="📝 Words", value=words_count)
             with col3:
                 st.metric(label="🫣 View Once Media", value=view_once_media_count)
+            
+            
+
+            col4, col5, col6=st.columns(3)
             with col4:
                 st.metric(label="📷 Media Files", value=media_count)
             with col5:
                 st.metric(label="🔗 Links Shared", value=links_count)
             with col6:
                 st.metric(label="🙊 Deleted Messages", value=del_msg_count)
-            
-
-
             
             
 
