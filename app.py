@@ -105,64 +105,69 @@ if uploaded_file is not None:
                     st.markdown(f"<h1 style='text-align:center';> {emoji_df['Emoji'][i]}</h1> ",unsafe_allow_html=True)
                     st.markdown(f"<p style='text-align:center; font-size: 20px;'>{emoji_df['Count'][i]}</p>",unsafe_allow_html=True)
 
-            # Word Cloud
-            st.markdown("### ☁️ Word Cloud")
-            df_wc=create_wordcloud(selected_user,df)
-            fig,ax=plt.subplots()
-            ax.imshow(df_wc)
-            st.pyplot(fig)
+            col3,col4=st.columns(2)
 
-            # Horizontal Bar graph
+            with col3:
+                # Word Cloud
+                st.markdown("### ☁️ Word Cloud")
+                df_wc=create_wordcloud(selected_user,df)
+                fig,ax=plt.subplots()
+                ax.imshow(df_wc)
+                st.pyplot(fig)
             
-            Most_common_df=most_common_words(selected_user,df)
-            st.markdown("### 😁 Most Common Words")
-            fig, ax = plt.subplots()
-            ax.barh(Most_common_df["Word"], Most_common_df["Count"], color="skyblue")
-            ax.set_xlabel("Message Count")
-            st.pyplot(fig)
-
-
-
-            # Time line graph
+            with col4:
+                # Horizontal Bar graph
             
-            timeline_df=monthly_timeline(selected_user,df)
-            st.markdown("### 📈 Monthly TimeLine")
-            fig, ax = plt.subplots()
-            ax.plot(timeline_df["Time"],timeline_df["Message"], color="skyblue")
-            ax.set_ylabel("Message Count")
-            plt.xticks(rotation="vertical")
-            st.pyplot(fig)
+                Most_common_df=most_common_words(selected_user,df)
+                st.markdown("### 😁 Most Common Words")
+                fig, ax = plt.subplots()
+                ax.barh(Most_common_df["Word"], Most_common_df["Count"], color="skyblue")
+                ax.set_xlabel("Message Count")
+                st.pyplot(fig)
 
 
-            # plt.plot(timeline_df["Time"],timeline_df["Message"])
-            # plt.xticks(rotation="vertical")
+            col5,col6=st.columns(2)
+
+            with col5:
+                 # Time line graph
             
+                timeline_df=monthly_timeline(selected_user,df)
+                st.markdown("### 📈 Monthly TimeLine")
+                fig, ax = plt.subplots()
+                ax.plot(timeline_df["Time"],timeline_df["Message"], color="skyblue")
+                ax.set_ylabel("Message Count")
+                plt.xticks(rotation="vertical")
+                st.pyplot(fig)
+            
+            with col6:
+                # Daily TimeLine
+                daily_df=daily_timeline(selected_user,df)
+                st.markdown("### 📈 Daily TimeLine")
+                fig, ax = plt.subplots()
+                ax.plot(daily_df["Only Date"],daily_df["Message"], color="skyblue")
+                plt.xticks(rotation="vertical")
+                st.pyplot(fig)
 
-            # Daily TimeLine
-            daily_df=daily_timeline(selected_user,df)
-            st.markdown("### 📈 Daily TimeLine")
-            fig, ax = plt.subplots()
-            ax.plot(daily_df["Only Date"],daily_df["Message"], color="skyblue")
-            plt.xticks(rotation="vertical")
-            st.pyplot(fig)
+            
+            col7,col8=st.columns(2)
 
+            with col7:
+                # Most active day
+                days_df=most_active_day(selected_user,df)
+                st.markdown("### 📊 Most Active Day")
+                fig, ax = plt.subplots()
+                ax.bar(days_df["Day Name"],days_df["count"])
+                plt.xticks(rotation=45)
+                st.pyplot(fig)
 
-            # Most active day
-            days_df=most_active_day(selected_user,df)
-            st.markdown("### 📊 Most Active Day")
-            fig, ax = plt.subplots()
-            ax.bar(days_df["Day Name"],days_df["count"])
-            plt.xticks(rotation=45)
-            st.pyplot(fig)
-
-            # Most active Month
-            month_df=most_active_month(selected_user,df)
-            st.markdown("### 📊 Most Active Month")
-            fig, ax = plt.subplots()
-            ax.bar(month_df["Month"],month_df["count"])
-            plt.xticks(rotation=45)
-            st.pyplot(fig)
-
+            with col8:
+                # Most active Month
+                month_df=most_active_month(selected_user,df)
+                st.markdown("### 📊 Most Active Month")
+                fig, ax = plt.subplots()
+                ax.bar(month_df["Month"],month_df["count"])
+                plt.xticks(rotation=45)
+                st.pyplot(fig)
 
                         
     else:
