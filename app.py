@@ -115,7 +115,7 @@ if uploaded_file is not None:
             # Horizontal Bar graph
             
             Most_common_df=most_common_words(selected_user,df)
-            st.markdown("### 💬 Most Common Words")
+            st.markdown("### 😁 Most Common Words")
             fig, ax = plt.subplots()
             ax.barh(Most_common_df["Word"], Most_common_df["Count"], color="skyblue")
             ax.set_xlabel("Message Count")
@@ -126,7 +126,7 @@ if uploaded_file is not None:
             # Time line graph
             
             timeline_df=monthly_timeline(selected_user,df)
-            st.markdown("### 💬 Monthly TimeLine")
+            st.markdown("### 📈 Monthly TimeLine")
             fig, ax = plt.subplots()
             ax.plot(timeline_df["Time"],timeline_df["Message"], color="skyblue")
             ax.set_ylabel("Message Count")
@@ -140,7 +140,7 @@ if uploaded_file is not None:
 
             # Daily TimeLine
             daily_df=daily_timeline(selected_user,df)
-            st.markdown("### 💬 Daily TimeLine")
+            st.markdown("### 📈 Daily TimeLine")
             fig, ax = plt.subplots()
             ax.plot(daily_df["Only Date"],daily_df["Message"], color="skyblue")
             plt.xticks(rotation="vertical")
@@ -149,7 +149,7 @@ if uploaded_file is not None:
 
             # Most active day
             days_df=most_active_day(selected_user,df)
-            st.markdown("### 💬 Most Active Day")
+            st.markdown("### 📊 Most Active Day")
             fig, ax = plt.subplots()
             ax.bar(days_df["Day Name"],days_df["count"])
             plt.xticks(rotation=45)
@@ -157,20 +157,12 @@ if uploaded_file is not None:
 
             # Most active Month
             month_df=most_active_month(selected_user,df)
-            st.markdown("### 💬 Most Active Month")
+            st.markdown("### 📊 Most Active Month")
             fig, ax = plt.subplots()
             ax.bar(month_df["Month"],month_df["count"])
             plt.xticks(rotation=45)
             st.pyplot(fig)
 
-
-
-            
-
-
-            
-
-            
 
                         
     else:

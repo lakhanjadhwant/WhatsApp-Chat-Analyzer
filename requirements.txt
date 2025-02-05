@@ -1,3 +1,5 @@
+streamlit
+pandas
 emoji
 urlextract
 wordcloud
