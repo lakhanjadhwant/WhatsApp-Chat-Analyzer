@@ -31,7 +31,7 @@ if uploaded_file is not None:
 
         selected_user = st.sidebar.selectbox("🔍 Show Analysis for", user_list)
 
-        if st.sidebar.button("📊 Show Analysis"):
+        if st.sidebar.button("📊 Click Here"):
             msg_count, words_count, media_count, links_count, view_once_media_count, del_msg_count= fetch_stats(selected_user, df)
 
             # **📌 Stats Section**
