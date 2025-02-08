@@ -29,7 +29,7 @@ if st.session_state["show_instructions"]:
             st.markdown("6. Extract the zip file and upload the **.txt** file here.")
 
     with col2:
-        st.markdown("### 🍏 For iPhone Users:")
+        st.markdown("### 🍎 For iPhone Users:")
         st.markdown("1. Open WhatsApp and go to the chat.")
         st.markdown("2. Tap the contact/group name at the top.")
         st.markdown("3. Scroll down and select Export Chat.")
