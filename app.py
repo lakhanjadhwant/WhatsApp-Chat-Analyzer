@@ -7,19 +7,47 @@ import pandas as pd
 # Streamlit Page Configuration
 st.set_page_config(page_title="WhatsApp Chat Analyzer", layout="wide")
 
+if "show_instructions" not in st.session_state:
+    st.session_state["show_instructions"] = True
+    
 # Sidebar
 st.sidebar.title("📊 WhatsApp Chat Analyzer")
 uploaded_file = st.sidebar.file_uploader("📂 Choose a file")
 
+if st.session_state["show_instructions"]:
+
+    st.markdown("## 📜 How to Export Your WhatsApp Chat as a .txt File")
+
+    col1,col2=st.columns(2)
+    with col1:
+            st.markdown("### 📱 For Android Users:")
+            st.markdown("1. Open WhatsApp and go to the chat.")
+            st.markdown("2. Tap the three-dot menu (top-right corner).")
+            st.markdown("3. Select More > Export chat.")
+            st.markdown("4. Choose **Without media** when prompted.")
+            st.markdown("5. Select a method to save the file (Drive, File Manager, etc.).")
+            st.markdown("6. Extract the zip file and upload the **.txt** file here.")
+
+    with col2:
+        st.markdown("### 🍏 For iPhone Users:")
+        st.markdown("1. Open WhatsApp and go to the chat.")
+        st.markdown("2. Tap the contact/group name at the top.")
+        st.markdown("3. Scroll down and select Export Chat.")
+        st.markdown("4. Choose **Without media**.")
+        st.markdown("5. Select where to save the .txt file (Files, etc.).")
+        st.markdown("6. Extract the zip file and upload the **.txt** file here.")
+
 if uploaded_file is not None:
     if uploaded_file.name.endswith(".txt"):
+
+        st.session_state["show_instructions"] = False
 
         # Load Data
         bytes_data = uploaded_file.getvalue()
         data = bytes_data.decode("utf-8")
         df = create_dataframe(data)
         
-        # Display DataFrame
+        # # Display DataFrame
         # st.markdown("### 📜 Chat Data Preview")
         # st.dataframe(df)
 
